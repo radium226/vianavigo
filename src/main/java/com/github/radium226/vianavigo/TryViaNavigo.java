@@ -62,7 +62,7 @@ public class TryViaNavigo {
 			//List<Location> locations = searchLocations(client, "ATLAS");
 			//System.out.println(locations);
 			
-			planItinerary(client, "MUSEE D'ORSAY, Paris", "GARE D'IVRY SUR SEINE, Ivry-sur-Seine", new Date());
+			planItinerary(client, "CHATELET LES HALLES", "Jules Joffrin, Paris", new Date(), new UserLocationChooser());
 		} finally {
 			IOUtil.closeQuietly(client);
 		}
@@ -74,7 +74,7 @@ public class TryViaNavigo {
 		URI uri = URI.create(UriTemplate.fromTemplate(uriTemplate)
 				.set("name", name)
 			.expand());
-		
+		System.out.println("uri = " + uri);
 		HttpGet request = new HttpGet(uri);
 		JSONObject rootAsJSON = client.execute(host, request, new JSONResponseHandler());
 		
@@ -85,7 +85,12 @@ public class TryViaNavigo {
 			String typeAsString = locationAsJSON.getString("type");
 			if (typeAsString.equals("StopArea")) {
 				String nameAsString = locationAsJSON.getString("name");
-				Location location = Location.valueOf(nameAsString);
+				String codeAsString = locationAsJSON.getString("externalCode");
+				
+				String cityNameAsString = locationAsJSON.getString("city");
+				String cityCodeAsString = locationAsJSON.getString("cityCode");
+				
+				Location location = Location.valueOf(nameAsString, codeAsString, City.valueOf(cityNameAsString, cityCodeAsString));
 				locations.add(location);
 				
 			}
@@ -93,13 +98,20 @@ public class TryViaNavigo {
 		return locations; 
 	}
 	
-	public static void planItinerary(HttpClient client, String departure, String arrival, Date dateTime) throws VariableExpansionException, MalformedUriTemplateException, ClientProtocolException, IOException, TransformerException, ParseException {
+	public static void planItinerary(HttpClient client, String departureName, String arrivalName, Date dateTime, LocationChooser locationChooser) throws VariableExpansionException, MalformedUriTemplateException, ClientProtocolException, IOException, TransformerException, ParseException {
 		HttpHost host = new HttpHost("www.vianavigo.com");
-		String uriTemplate = "/stif_web_carto/comp/itinerary/search.html{?criteria,departure,arrival,submitSearchItinerary,date,dateFormat,hour,min}";
+		String uriTemplate = "/stif_web_carto/comp/itinerary/search.html{?criteria,departure*,arrival*,submitSearchItinerary,date,dateFormat,hour,min}";
 		String dateFormat = "dd/MM/yyyy";
+		
+		Location departure = locationChooser.chooseLocation(searchLocations(client, departureName));
+		Location arrival = locationChooser.chooseLocation(searchLocations(client, arrivalName));
+		System.out.println(" --> departure = " + departure);
+		System.out.println(" --> arrival = " + arrival);
+		
+		
 		URI uri = URI.create(UriTemplate.fromTemplate(uriTemplate)
-				.set("departure", departure)
-				.set("arrival", arrival)
+				.set("departure", LocationVarExploder.forDeparture(departure))
+				.set("arrival", LocationVarExploder.forArrival(arrival))
 				.set("dateFormat", dateFormat)
 				.set("date", new SimpleDateFormat(dateFormat).format(dateTime))
 				.set("hour", new SimpleDateFormat("HH").format(dateTime))
@@ -172,8 +184,8 @@ public class TryViaNavigo {
 		HttpRoutePlanner proxyRoutePlanner = newProxyRoutePlanner();
 		
 		CloseableHttpClient httpClient = HttpClientBuilder.create()
-//				.setRoutePlanner(proxyRoutePlanner)
-//				.setDefaultCredentialsProvider(newProxyCredentialsProvider())
+				.setRoutePlanner(proxyRoutePlanner)
+				.setDefaultCredentialsProvider(newProxyCredentialsProvider())
 			.build();
 		
 		return httpClient;
@@ -246,7 +258,7 @@ public class TryViaNavigo {
 			case 0:
 				System.out.println("We... ");
 				// Departure
-				location = Location.valueOf(locationAsString);
+				location = Location.valueOf(locationAsString, "", null);
 				dateTime = new SimpleDateFormat("HH:mm").parse(dateTimeAsString);
 				departure = new LocationDateTime(location, dateTime);
 				break;
@@ -258,7 +270,7 @@ public class TryViaNavigo {
 			case 2:
 				System.out.println("...Here! ");
 				// Arrival
-				location = Location.valueOf(locationAsString);
+				location = Location.valueOf(locationAsString, "", null);
 				dateTime = new SimpleDateFormat("HH:mm").parse(dateTimeAsString);
 				arrival = new LocationDateTime(location, dateTime);
 				
