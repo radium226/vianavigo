@@ -7,8 +7,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
-import org.w3c.dom.Document;
-import org.w3c.tidy.Tidy;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 public class HTMLResponseHandler implements ResponseHandler<Document> {
 
@@ -17,9 +17,7 @@ public class HTMLResponseHandler implements ResponseHandler<Document> {
 		HttpEntity entity = response.getEntity();
 		InputStream content = entity.getContent();
 		try {
-			Document document = null; 
-			Tidy tidy = new Tidy();
-			document = tidy.parseDOM(content, null);
+			Document document = Jsoup.parse(content, null, "caca");
 			return document;
 		} finally {
 			IOUtil.closeQuietly(content);

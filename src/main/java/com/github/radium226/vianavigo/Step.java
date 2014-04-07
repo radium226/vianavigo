@@ -1,9 +1,55 @@
 package com.github.radium226.vianavigo;
 
-public interface Step {
+import com.google.common.base.Objects;
 
-	public Location getDeparature();
+public class Step {
+
+	private LocationDateTime departure; 
+	private LocationDateTime arrival;
+	private Transportation transportation;
 	
-	public Location getArrival();
+	public Step(LocationDateTime departure, Transportation transportation, LocationDateTime arrival) {
+		super();
+		
+		this.departure = departure;
+		this.transportation = transportation;
+		this.arrival = arrival;
+	}
+	
+	public LocationDateTime getDeparture() {
+		return this.departure;
+	}
+	
+	public LocationDateTime getArrival() {
+		return this.arrival;
+	}
+	
+	public Transportation getTransportation() {
+		return this.transportation; 
+	}
+	
+	@Override
+	public boolean equals(Object object) {
+		boolean equality = false;
+		if (object instanceof Step) {
+			Step that = (Step) object;
+			equality = Objects.equal(this.departure, that.departure) && Objects.equal(this.transportation, that.transportation) && Objects.equal(this.arrival, that.arrival);
+		}
+		return equality;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(this.departure, this.transportation, this.arrival);
+	}
+	
+	@Override
+	public String toString() {
+		return Objects.toStringHelper(this)
+				.add("departure", this.departure)
+				.add("transportation", this.transportation)
+				.add("arrival", this.arrival)
+			.toString();
+	}
 	
 }

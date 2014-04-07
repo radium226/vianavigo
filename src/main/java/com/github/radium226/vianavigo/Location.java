@@ -24,7 +24,7 @@ public class Location {
 		boolean equality = false;
 		if (object instanceof Location) {
 			Location that = (Location) object;
-			equality = this.name == that.name;
+			equality = Objects.equal(this.name, that.name);
 		}
 		return equality;
 	}
