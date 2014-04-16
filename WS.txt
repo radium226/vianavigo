@@ -1,0 +1,141 @@
+6034:8:response,2881:11:httpversion,8:1:1#1:1#]13:timestamp_end,17:1397299847.903508^3:msg,2:OK,15:timestamp_start,17:1397299847.900819^7:headers,161:40:4:Date,29:Sat, 12 Apr 2014 10:43:24 GMT,]18:6:Server,6:Apache,]28:16:Content-Language,5:en-US,]25:14:Content-Length,4:2561,]30:12:Content-Type,10:text/plain,]]7:content,2561:{"results": [
+  {
+    "type": "1",
+    "depart": "2014-04-12T06:47",
+    "arrivee": "2014-04-12T07:20",
+    "nomDepart": "Jules Joffrin, Paris",
+    "departCityCode": "75000",
+    "departType": "StopPoint",
+    "nomArrivee": "Porte de Vanves, Paris",
+    "arriveeCityCode": "75000",
+    "arriveeType": "StopPoint",
+    "duree": 33,
+    "MAP": "4",
+    "etapes": [
+      {
+        "mode": "Metro",
+        "ligne": "12",
+        "ligneCode": "12",
+        "networkName": "METRO",
+        "externalCode": "100110012:12"
+      },
+      {
+        "mode": "Marche",
+        "ligne": "",
+        "ligneCode": "",
+        "externalCode": "59222"
+      },
+      {
+        "mode": "Attente",
+        "ligne": "",
+        "ligneCode": "",
+        "externalCode": "59223"
+      },
+      {
+        "mode": "Metro",
+        "ligne": "13",
+        "ligneCode": "13",
+        "networkName": "METRO",
+        "externalCode": "100110013:13"
+      }
+    ]
+  },
+  {
+    "type": "2",
+    "depart": "2014-04-12T06:47",
+    "arrivee": "2014-04-12T07:36",
+    "nomDepart": "JULES JOFFRIN, Paris",
+    "departCityCode": "75000",
+    "departType": "StopArea",
+    "nomArrivee": "PORTE DE VANVES, Paris",
+    "arriveeCityCode": "75000",
+    "arriveeType": "StopPoint",
+    "duree": 49,
+    "MAP": "11",
+    "etapes": [
+      {
+        "mode": "Marche",
+        "ligne": "",
+        "ligneCode": "",
+        "externalCode": "59518"
+      },
+      {
+        "mode": "Bus",
+        "ligne": "MOBILIEN 95",
+        "ligneCode": "95",
+        "networkName": "RATP",
+        "externalCode": "100100095:95"
+      }
+    ]
+  },
+  {
+    "type": "3",
+    "depart": "2014-04-12T06:46",
+    "arrivee": "2014-04-12T07:36",
+    "nomDepart": "MAIRIE DU 18E - JULES JOFFRIN, Paris",
+    "departCityCode": "75000",
+    "departType": "StopPoint",
+    "nomArrivee": "PORTE DE VANVES, Paris",
+    "arriveeCityCode": "75000",
+    "arriveeType": "StopPoint",
+    "duree": 50,
+    "MAP": "1",
+    "etapes": [
+      {
+        "mode": "Bus",
+        "ligne": "MOBILIEN 80",
+        "ligneCode": "80",
+        "networkName": "RATP",
+        "externalCode": "100100080:80"
+      },
+      {
+        "mode": "Marche",
+        "ligne": "",
+        "ligneCode": "",
+        "externalCode": "59:4037280"
+      },
+      {
+        "mode": "Attente",
+        "ligne": "",
+        "ligneCode": "",
+        "externalCode": "59:4016356"
+      },
+      {
+        "mode": "Bus",
+        "ligne": "MOBILIEN 95",
+        "ligneCode": "95",
+        "networkName": "RATP",
+        "externalCode": "100100095:95"
+      }
+    ]
+  }
+]},4:code,3:200#}5:error,0:~7:version,9:1:0#2:11#]8:conntype,4:http,11:client_conn,212:10:clientcert,0:~7:address,59:7:address,26:14:192.168.43.195,5:55754#]8:use_ipv6,5:false!}15:timestamp_start,17:1397299845.827887^13:timestamp_end,17:1397299849.381798^19:timestamp_ssl_setup,17:1397299846.411482^}11:server_conn,2094:15:ssl_established,4:true!14:source_address,0:~13:timestamp_end,17:1397299849.381663^7:address,59:7:address,26:16:ws.vianavigo.com,3:443#]8:use_ipv6,5:false!}15:timestamp_start,16:1397299845.94302^3:sni,0:~4:cert,1749:-----BEGIN CERTIFICATE-----
+MIIE3TCCA8WgAwIBAgIDBUceMA0GCSqGSIb3DQEBBQUAMDwxCzAJBgNVBAYTAlVT
+MRcwFQYDVQQKEw5HZW9UcnVzdCwgSW5jLjEUMBIGA1UEAxMLUmFwaWRTU0wgQ0Ew
+HhcNMTIwMjE5MTY1NjM3WhcNMTcwMjIxMTM0NDE0WjCB5TEpMCcGA1UEBRMgOEFu
+UWEvZnEzS2pxaWtZaFZxRGZzZklxRVFWaUtwUkgxCzAJBgNVBAYTAkZSMRgwFgYD
+VQQKDA8qLnZpYW5hdmlnby5jb20xEzARBgNVBAsTCkdUODY4OTE3MDQxMTAvBgNV
+BAsTKFNlZSB3d3cucmFwaWRzc2wuY29tL3Jlc291cmNlcy9jcHMgKGMpMTIxLzAt
+BgNVBAsTJkRvbWFpbiBDb250cm9sIFZhbGlkYXRlZCAtIFJhcGlkU1NMKFIpMRgw
+FgYDVQQDDA8qLnZpYW5hdmlnby5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQDDFxFdZJmvQkZ7yaykFab9w3NJq9Ui6i3eDekNbMMRiEisMsU4dBoj
+CC1j2NFNQ3xLGuSbs3VqV6I0KW4ca9nyEUy5M05/H6SZTlMo7G4lT2xBkn3VjLGW
+mF5Dby6jZ7mS7tcVDzP0zCQ0AOEFmKNKFrndkvhtOp+/e/QlUPU4m6gmml17xYVA
+4QME0u6yjFuR4gVZXa+bk1dM9C69u5LTx+dUufiVi7//xs5m8adsMrCL5XmVE4JY
+BB1VRicitwk2U0hQHITmXOoSTEQFvElNRai97MWsWBIvnBxkC0qmvvY2r//4HME4
+7bRgvc9NFkFpHK7EiM2ZM9WnRAeSHhiHAgMBAAGjggE8MIIBODAfBgNVHSMEGDAW
+gBRraT1qGEJK3Y8CZTn9NSSGeJEWMDAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwEGCCsGAQUFBwMCMCkGA1UdEQQiMCCCDyoudmlhbmF2aWdvLmNv
+bYINdmlhbmF2aWdvLmNvbTBDBgNVHR8EPDA6MDigNqA0hjJodHRwOi8vcmFwaWRz
+c2wtY3JsLmdlb3RydXN0LmNvbS9jcmxzL3JhcGlkc3NsLmNybDAdBgNVHQ4EFgQU
+cjlwCbwhNq7+09A8jhFatwh3mewwDAYDVR0TAQH/BAIwADBJBggrBgEFBQcBAQQ9
+MDswOQYIKwYBBQUHMAKGLWh0dHA6Ly9yYXBpZHNzbC1haWEuZ2VvdHJ1c3QuY29t
+L3JhcGlkc3NsLmNydDANBgkqhkiG9w0BAQUFAAOCAQEAmn/XTDhSeI7HlTB7lZO7
+GNQ0+X15jbnVIjkzAkLBb3siYAV1LWAX/KjigfZe5/seniFS4S0wdrOltSLVXlIr
+tSj+CxqEDu7r8kH0ZV0RhRb/jdi+3mWvebWIde9CmJ+qZ8kK7MqRMrQDRJrl4bsC
+Lscaz/4fGCe4uFsIoEtRqUaDkylLkWUvM90ZE5hixTaCv7LQn4F8gDdSDTbIqnya
+peCv17vXYJVzx5IWe96QSElyMTzuh8mx5NfEJpSnb1u2imFGTjEdXTrJkH6yKQbQ
+eZwSMgW2xsvYHLACH+wzIUTIK4NI9RD/kJiExvnW8L7w11o47NmTBsgez0Guis9N
+WA==
+-----END CERTIFICATE-----
+,19:timestamp_ssl_setup,17:1397299846.240961^8:peername,23:13:195.46.215.92,3:443#]19:timestamp_tcp_setup,17:1397299846.031003^}7:request,723:11:httpversion,8:1:1#1:1#]4:port,0:~6:scheme,0:~6:method,3:GET,4:path,269:/stif_web_services/rest/itinerarySearch?enableNewCriteria=true&departureType=StopArea&departureCity=Paris&departure=JULES+JOFFRIN%2C+Paris&arrivalType=StopArea&arrivalCity=Paris&arrival=PORTE+DE+VANVES%2C+Paris&date=2014-04-12T06%3A45&dateType=1&modes=11111&walkSpeed=1,8:form_out,8:relative,4:host,0:~7:headers,220:53:12:Content-Type,33:application/x-www-form-urlencoded,]44:5:token,32:67d4a83aba8016fc62b8187564a7c72b,]18:7:version,5:3.1.9,]26:15:Accept-Encoding,4:gzip,]27:4:Host,16:ws.vianavigo.com,]28:10:Connection,10:Keep-Alive,]]7:content,0:,7:form_in,8:relative,15:timestamp_start,17:1397299846.422342^13:timestamp_end,17:1397299846.427672^}}
