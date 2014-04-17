@@ -47,4 +47,8 @@ public class LocationDateTime {
 			.toString();
 	}
 	
+	public static LocationDateTime valueOf(Location location, Date dateTime) {
+		return new LocationDateTime(location, dateTime);
+	}
+	
 }

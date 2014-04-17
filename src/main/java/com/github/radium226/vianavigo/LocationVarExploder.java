@@ -40,11 +40,11 @@ public class LocationVarExploder implements VarExploder {
 		return Lists.<Object>newArrayList(this.location.getName(), this.location.getCode());
 	}
 
-	public static LocationVarExploder forDeparture(Location departure) {
+	public static LocationVarExploder forDepartureLocation(Location departure) {
 		return new LocationVarExploder(DEPARTURE_PREFIX, departure);
 	}
 	
-	public static LocationVarExploder forArrival(Location arrival) {
+	public static LocationVarExploder forArrivalLocation(Location arrival) {
 		return new LocationVarExploder(ARRIVAL_PREFIX, arrival);
 	}
 	

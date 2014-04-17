@@ -6,25 +6,27 @@ import com.google.common.base.Optional;
 public class Transportation {
 
 	public static enum Type {
-		WALK, TRAIN, RER, BUS, METRO, TRAMWAY
+		TRAIN, METRO, TRAMWAY, RER, BUS, WALK
 	}
 	
 	private Type type;
 	private Optional<String> name;
+	private Location direction;
 	
-	protected Transportation(Transportation.Type type, Optional<String> name) {
+	protected Transportation(Transportation.Type type, Optional<String> name, Location direction) {
 		super();
 		
 		this.type = type; 
 		this.name = name;
+		this.direction = direction;
 	}
 	
-	public Transportation(Transportation.Type type) {
-		this(type, Optional.<String>absent());
+	public Transportation(Transportation.Type type, Location direction) {
+		this(type, Optional.<String>absent(), direction);
 	}
 	
-	public Transportation(Transportation.Type type, String name) {
-		this(type, Optional.<String>of(name));
+	public Transportation(Transportation.Type type, String name, Location direction) {
+		this(type, Optional.<String>of(name), direction);
 	}
 	
 	public Optional<String> getName() {
@@ -35,19 +37,23 @@ public class Transportation {
 		return this.type; 
 	}
 	
+	public Location getDirection() {
+		return direction;
+	}
+	
 	@Override
 	public boolean equals(Object object) {
 		boolean equality = false;
 		if (object instanceof Transportation) {
 			Transportation that = (Transportation) object;
-			equality = Objects.equal(this.type, that.type) && Objects.equal(this.name, that.name);
+			equality = Objects.equal(this.type, that.type) && Objects.equal(this.name, that.name) && Objects.equal(this.direction, that.direction);
 		}
 		return equality;
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(this.type, this.name);
+		return Objects.hashCode(this.type, this.name, this.direction);
 	}
 	
 	@Override
@@ -55,6 +61,7 @@ public class Transportation {
 		return Objects.toStringHelper(this)
 				.add("type", this.type)
 				.add("name", this.name)
+				.add("name", this.direction)
 			.toString();
 	}
 	

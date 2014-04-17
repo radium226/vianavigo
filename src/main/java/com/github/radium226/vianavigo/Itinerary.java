@@ -2,22 +2,43 @@ package com.github.radium226.vianavigo;
 
 import java.util.List;
 
+import com.google.common.base.Objects;
+
 public class Itinerary {
 
-	private Location departure;
-	private Location arrival;
 	private List<Step> steps;
 	
-	public Location getDeparture() {
-		return departure;
-	}
-	
-	public Location getArrival() {
-		return arrival;
+	protected Itinerary(List<Step> steps) {
+		super();
+		
+		this.steps = steps;
 	}
 	
 	public List<Step> getSteps() {
 		return steps;
+	}
+	
+	public static Itinerary valueOf(List<Step> steps) {
+		return new Itinerary(steps);
+	}
+	
+	public boolean equals(Object object) {
+		boolean equality = false;
+		if (object instanceof Itinerary) {
+			Itinerary that = (Itinerary) object;
+			equality = Objects.equal(this.steps, that.steps);
+		}
+		return equality;
+	}
+	
+	public String toString() {
+		return Objects.toStringHelper(this)
+				.add("steps", this.steps)
+			.toString();
+	}
+	
+	public int hashCode() {
+		return Objects.hashCode(this.steps);
 	}
 	
 }

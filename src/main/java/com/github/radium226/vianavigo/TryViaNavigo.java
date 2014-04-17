@@ -69,14 +69,15 @@ public class TryViaNavigo {
 	}
 	
 	public static List<Location> searchLocations(HttpClient client, String name) throws VariableExpansionException, MalformedUriTemplateException, ClientProtocolException, IOException {
-		HttpHost host = new HttpHost("www.vianavigo.com");
+		return null; 
+		/*HttpHost host = new HttpHost("www.vianavigo.com");
 		String uriTemplate = "/stif_web_carto/rest/searchPoints/{name}";
 		URI uri = URI.create(UriTemplate.fromTemplate(uriTemplate)
 				.set("name", name)
 			.expand());
 		System.out.println("uri = " + uri);
 		HttpGet request = new HttpGet(uri);
-		JSONObject rootAsJSON = client.execute(host, request, new JSONResponseHandler());
+		JSONObject rootAsJSON = client.execute(host, request, new JsonResponseHandler());
 		
 		List<Location> locations = Lists.newArrayList();
 		JSONArray listAsJSON = rootAsJSON.getJSONArray("list");
@@ -95,7 +96,7 @@ public class TryViaNavigo {
 				
 			}
 		}
-		return locations; 
+		return locations; */
 	}
 	
 	public static void planItinerary(HttpClient client, String departureName, String arrivalName, Date dateTime, LocationChooser locationChooser) throws VariableExpansionException, MalformedUriTemplateException, ClientProtocolException, IOException, TransformerException, ParseException {
@@ -110,8 +111,8 @@ public class TryViaNavigo {
 		
 		
 		URI uri = URI.create(UriTemplate.fromTemplate(uriTemplate)
-				.set("departure", LocationVarExploder.forDeparture(departure))
-				.set("arrival", LocationVarExploder.forArrival(arrival))
+				.set("departure", LocationVarExploder.forDepartureLocation(departure))
+				.set("arrival", LocationVarExploder.forArrivalLocation(arrival))
 				.set("dateFormat", dateFormat)
 				.set("date", new SimpleDateFormat(dateFormat).format(dateTime))
 				.set("hour", new SimpleDateFormat("HH").format(dateTime))
@@ -265,7 +266,7 @@ public class TryViaNavigo {
 			case 1:
 				System.out.println("...Are...");
 				// Transportation
-				transportation = transportationNameAsString != null ? new Transportation(parseTransportationType(transportationTypeAsString), transportationNameAsString) : new Transportation(parseTransportationType(transportationTypeAsString));
+				transportation = transportationNameAsString != null ? new Transportation(parseTransportationType(transportationTypeAsString), transportationNameAsString, null) : new Transportation(parseTransportationType(transportationTypeAsString), null);
 				break;
 			case 2:
 				System.out.println("...Here! ");
@@ -274,7 +275,7 @@ public class TryViaNavigo {
 				dateTime = new SimpleDateFormat("HH:mm").parse(dateTimeAsString);
 				arrival = new LocationDateTime(location, dateTime);
 				
-				Step step = new Step(departure, transportation, arrival);
+				Step step = new Step(departure, transportation, arrival.getLocation());
 				steps.add(step);				
 				break;
 			}

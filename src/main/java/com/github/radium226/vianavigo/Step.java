@@ -5,10 +5,10 @@ import com.google.common.base.Objects;
 public class Step {
 
 	private LocationDateTime departure; 
-	private LocationDateTime arrival;
+	private Location arrival;
 	private Transportation transportation;
 	
-	public Step(LocationDateTime departure, Transportation transportation, LocationDateTime arrival) {
+	public Step(LocationDateTime departure, Transportation transportation, Location arrival) {
 		super();
 		
 		this.departure = departure;
@@ -20,7 +20,7 @@ public class Step {
 		return this.departure;
 	}
 	
-	public LocationDateTime getArrival() {
+	public Location getArrival() {
 		return this.arrival;
 	}
 	

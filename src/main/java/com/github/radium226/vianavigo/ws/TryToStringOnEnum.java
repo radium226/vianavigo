@@ -15,17 +15,17 @@ public class TryToStringOnEnum {
     
     public static class TypeToStringFunction implements Function<Type, String> {
 
-        private static EnumSet<Type> selectedTypes;
+        private static EnumSet<Type> types;
         
         protected TypeToStringFunction(EnumSet<Type> selectedTypes) {
             super();
             
-            this.selectedTypes = selectedTypes;
+            this.types = selectedTypes;
         }
         
         @Override
         public String apply(Type type) {
-            return selectedTypes.contains(type) ? "1" : "0";
+            return types.contains(type) ? "1" : "0";
         }
         
         public static TypeToStringFunction forSelectedTypes(EnumSet<Type> selectedTypes) {

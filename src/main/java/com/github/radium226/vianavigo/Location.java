@@ -6,7 +6,6 @@ public class Location {
 	
 	private String name;
 	private String code;
-	
 	private City city;
 	
 	protected Location(String name, String code, City city) {
@@ -24,6 +23,8 @@ public class Location {
 	public String getCode() {
 		return code;
 	}
+	
+	
 	
 	public City getCity() {
 		return city;
